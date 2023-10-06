@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import com.jfoenix.controls.JFXToolbar?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.unaplanilla.controller.PrincipalViewController">
+   <center>
+      <VBox alignment="CENTER" fillWidth="false" prefHeight="658.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+         </padding></VBox>
+   </center>
+   <left>
+      <VBox prefHeight="484.0" prefWidth="188.0" style="-fx-padding: 0000;" styleClass="jfx-contenedor-principal" BorderPane.alignment="CENTER">
+         <children>
+            <StackPane>
+               <children>
+                  <ImageView fitHeight="96.0" fitWidth="192.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../resources/FondoInicio.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="73.0" fitWidth="78.0" opacity="0.8" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/Icono-96.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </StackPane>
+            <AnchorPane prefHeight="51.0" prefWidth="192.0" style="-fx-padding: 0 0 0 0;" styleClass="jfx-contenedor-principal">
+               <children>
+                  <ImageView fitHeight="44.0" fitWidth="41.0" layoutX="3.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/user.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lblUsuario" layoutX="62.0" layoutY="5.0" prefHeight="17.0" prefWidth="123.0" styleClass="jfx-lbl-general" />
+                  <Label fx:id="lblNombreU" layoutX="62.0" layoutY="25.0" prefHeight="17.0" prefWidth="123.0" styleClass="jfx-lbl-general" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </VBox.margin>
+            </AnchorPane>
+            <JFXButton fx:id="btnEmpleados" onAction="#onActionBtnEmpleados" prefHeight="45.0" prefWidth="600.0" styleClass="jfx-menubutton1" text="Empleados" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </VBox.margin></JFXButton>
+            <JFXButton fx:id="btnTiposPlanilla" onAction="#onActionBtnTiposPlanilla" prefHeight="45.0" prefWidth="600.0" styleClass="jfx-menubutton1" text="Tipos Planilla" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </VBox.margin></JFXButton>
+            <JFXButton fx:id="btnCerrarSesion" buttonType="RAISED" onAction="#onActionBtnCerrarSesion" prefHeight="40.0" prefWidth="600.0" ripplerFill="WHITE" styleClass="jfx-menubutton2" text="Cerrar Sesión">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnSalir" buttonType="RAISED" onAction="#onActionBtnSalir" prefHeight="40.0" prefWidth="600.0" ripplerFill="WHITE" styleClass="jfx-menubutton2" text="Salir" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </JFXButton>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </left>
+   <top>
+      <AnchorPane prefHeight="40.0" prefWidth="1200.0" BorderPane.alignment="TOP_LEFT">
+         <children>
+            <JFXToolbar opacity="0.68" prefHeight="40.0" prefWidth="1200.0" styleClass="jfx-toolbar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <left>
+                  <JFXHamburger fx:id="btnMenuLateral" styleClass="jfx-hamburger" BorderPane.alignment="CENTER" />
+               </left>
+               <right>
+                  <AnchorPane prefHeight="42.0" prefWidth="30.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="44.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="10.0">
+                           <image>
+                              <Image url="@../resources/Casa-48.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </AnchorPane>
+               </right>
+               <center>
+                  <Label styleClass="toolbar-label" text="Sistema UnaPlanilla" BorderPane.alignment="CENTER" />
+               </center>
+            </JFXToolbar>
+         </children></AnchorPane>
+   </top>
+</BorderPane>

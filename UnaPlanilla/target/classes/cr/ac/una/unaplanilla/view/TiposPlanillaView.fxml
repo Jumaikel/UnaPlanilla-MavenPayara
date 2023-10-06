@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="root" minHeight="480.0" minWidth="450.0" prefHeight="500.0" prefWidth="700.0" styleClass="jfx-panelfondo" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.unaplanilla.controller.TiposPlanillaViewController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+               <children>
+                  <Label prefHeight="45.0" prefWidth="283.0" styleClass="jfx-titulo-label" text="Control Tipos Planilla" />
+                  <TabPane fx:id="tbpTipoPlanilla" VBox.vgrow="ALWAYS">
+                     <tabs>
+                        <Tab fx:id="tbpTipoPlanillas" text="Tipo Planilla">
+                           <content>
+                              <AnchorPane>
+                                 <children>
+                                    <VBox layoutX="20.0" layoutY="14.0" prefHeight="342.0" prefWidth="255.0" spacing="30.0" style="-fx-padding: 25 40 0 40;" styleClass="jfx-contenedor-principal" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="9.0">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" spacing="20.0">
+                                             <children>
+                                                <JFXTextField fx:id="txtId" focusColor="#09b6bc" labelFloat="true" minWidth="60.0" onKeyPressed="#onKeyPressTxtId" prefHeight="22.0" prefWidth="150.0" promptText="Id" styleClass="jfx-txt-id" unFocusColor="#540606">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </JFXTextField>
+                                                <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <JFXCheckBox fx:id="chkActivo" text="Activo" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <JFXTextField fx:id="txtCodigo" focusColor="#09b6bc" labelFloat="true" layoutX="10.0" layoutY="142.0" maxWidth="150.0" minWidth="80.0" onKeyPressed="#onKeyPressedTxtCodigo" prefHeight="22.0" prefWidth="150.0" promptText="Codigo" styleClass="jfx-txt-id">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </JFXTextField>
+                                          <JFXTextField fx:id="txtDescripcion" focusColor="#09b6bc" labelFloat="true" layoutX="10.0" layoutY="142.0" prefHeight="22.0" prefWidth="382.0" promptText="Descripcion">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </JFXTextField>
+                                          <JFXTextField fx:id="txtPlanillasMes" focusColor="#09b6bc" labelFloat="true" layoutX="10.0" layoutY="254.0" maxWidth="150.0" minWidth="100.0" prefHeight="22.0" prefWidth="150.0" promptText="Planillas x mes">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </JFXTextField>
+                                       </children>
+                                       <padding>
+                                          <Insets left="40.0" right="40.0" top="20.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab fx:id="tbpInclusionEmpleados" onSelectionChanged="#selectionChangeTabEmp" text="Inclusion Empleados">
+                          <content>
+                            <AnchorPane>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                                 <children>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" styleClass="jfx-contenedor-principal" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="9.0">
+                                       <children>
+                                          <HBox alignment="BOTTOM_LEFT" prefHeight="14.0" prefWidth="580.0" spacing="10.0">
+                                             <children>
+                                                <JFXTextField fx:id="txtIdEmpleado" focusColor="#09b6bc" labelFloat="true" minWidth="110.0" onKeyPressed="#onKeyPressedTxtIdEmpleado" prefHeight="22.0" prefWidth="110.0" promptText="Id Empleado" styleClass="jfx-txt-id" unFocusColor="#540606" HBox.hgrow="NEVER">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </JFXTextField>
+                                                <JFXTextField fx:id="txtNombreEmpleado" focusColor="#09b6bc" labelFloat="true" prefHeight="22.0" prefWidth="440.0" promptText="Nombre" unFocusColor="#540606" HBox.hgrow="ALWAYS">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </JFXTextField>
+                                                <JFXButton fx:id="btnAgregarEmpleado" contentDisplay="GRAPHIC_ONLY" ellipsisString="" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onActionBtnAgregarEmpleado" prefHeight="26.0" prefWidth="26.0" styleClass="jfx-btnimg-agregar">
+                                                   <graphic>
+                                                      <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" smooth="false">
+                                                         <image>
+                                                            <Image url="@../resources/Agregar-48.png" />
+                                                         </image></ImageView>
+                                                   </graphic>
+                                                </JFXButton>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                             <padding>
+                                                <Insets top="15.0" />
+                                             </padding>
+                                          </HBox>
+                                          <Label styleClass="jfx-subtitulo-label" text="Lista empleados">
+                                             <VBox.margin>
+                                                <Insets bottom="-5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Separator prefHeight="3.0" prefWidth="550.0">
+                                             <VBox.margin>
+                                                <Insets bottom="-5.0" />
+                                             </VBox.margin>
+                                          </Separator>
+                                          <TableView fx:id="tbvEmpleados" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                            <columns>
+                                              <TableColumn fx:id="tbcCodigo" prefWidth="60.0" text="Id" />
+                                              <TableColumn fx:id="tbcNombre" prefWidth="440.0" text="Nombre" />
+                                                <TableColumn fx:id="tbcEliminar" prefWidth="60.0" text="Eliminar" />
+                                            </columns>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </TableView>
+                                       </children>
+                                    </VBox>
+                                 </children></AnchorPane>
+                          </content>
+                        </Tab>
+                     </tabs>
+                  </TabPane>
+                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="641.0" spacing="20.0" VBox.vgrow="NEVER">
+                     <children>
+                        <JFXButton fx:id="btnNuevo" buttonType="RAISED" onAction="#onActionBtnNuevo" prefHeight="40.0" prefWidth="130.0" styleClass="jfx-btn-nuevo" text="Nuevo">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="btnBuscar" layoutX="187.0" layoutY="10.0" onAction="#onActionBtnBuscar" prefHeight="40.0" prefWidth="130.0" styleClass="jfx-btn-buscar" text="Buscar">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="btnEliminar" layoutX="264.0" layoutY="10.0" onAction="#onActionBtnEliminar" prefHeight="40.0" prefWidth="130.0" styleClass="jfx-btn-eliminar" text="Eliminar">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="btnGuardar" layoutX="264.0" layoutY="10.0" onAction="#onActionBtnGuardar" prefHeight="40.0" prefWidth="130.0" styleClass="jfx-btn-guardar" text="Guardar">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="20.0" right="20.0" top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

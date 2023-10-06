@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" styleClass="jfx-panelfondo" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.unaplanilla.controller.BuscarViewController">
+   <children>
+      <AnchorPane prefHeight="420.0" prefWidth="620.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <VBox prefHeight="435.0" prefWidth="657.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label styleClass="jfx-titulo-label" text="Buscar" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="420.0" prefWidth="600.0" spacing="10.0">
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="388.0" prefWidth="177.0" spacing="10.0">
+                           <children>
+                              <Label styleClass="jfx-subtitulo-label" text="Filtro" />
+                              <JFXTextField fx:id="txtfCodigo" prefWidth="237.0" promptText="Codigo" />
+                              <JFXTextField fx:id="txtfDescripcion" layoutX="10.0" layoutY="10.0" promptText="Descripción" />
+                              <JFXComboBox fx:id="cmbEstado" prefWidth="184.0" promptText="Estado" />
+                              <VBox alignment="BOTTOM_CENTER" prefHeight="246.0" prefWidth="152.0" spacing="10.0">
+                                 <children>
+                                    <JFXButton fx:id="btnAgregar" onMouseClicked="#onMouseClickedAgregar" prefHeight="30.0" prefWidth="73.0" styleClass="jfx-btn-nuevo" text="Cargar" />
+                                    <JFXButton fx:id="btnSalir" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#onMouseClickedSalir" prefHeight="30.0" prefWidth="72.0" styleClass="jfx-btn-eliminar" text="Salir" textAlignment="CENTER" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="20.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding>
+                        </VBox>
+                        <TableView fx:id="tblvTiposPlanilla" onMouseClicked="#onMouseClickedTblvTipoPlanilla" prefHeight="388.0" prefWidth="513.0">
+                          <columns>
+                            <TableColumn fx:id="colId" prefWidth="29.0" text="Id" />
+                              <TableColumn fx:id="colCodigo" prefWidth="91.0" text="Codigo" />
+                            <TableColumn fx:id="colDescripcion" prefWidth="285.0" text="Descripción" />
+                              <TableColumn fx:id="colEstado" prefWidth="82.0" text="Estado" />
+                          </columns>
+                        </TableView>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

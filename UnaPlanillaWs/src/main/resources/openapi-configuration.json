@@ -1,0 +1,29 @@
+{
+    "resourcePackages": [
+        "cr.ac.una.unaplanillaws.controller"
+    ],
+    "prettyPrint": true,
+    "cacheTTL": 0,
+    "openAPI": {
+        "info": {
+            "version": "1.0.0",
+            "title": "UNA Planilla ES",
+            "description": "API REST UNAPlanillaWS",
+            "contact": {
+                "name": "Jumaikel Chinchilla",
+                "email": "jumaikelcm@gmail.com"
+            }
+        },
+        "servers": [
+            {
+                "url": "http://localhost:8080/UnaPlanillaWs/"
+            },
+            {
+                "url": "https://localhost:8080/UnaPlanillaWs/"
+            }
+        ],
+        "components": {
+            
+        }
+    }
+}
