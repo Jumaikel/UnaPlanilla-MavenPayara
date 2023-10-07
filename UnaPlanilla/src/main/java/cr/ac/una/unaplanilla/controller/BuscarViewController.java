@@ -60,6 +60,7 @@ public class BuscarViewController extends Controller implements Initializable {
 
     List<TipoPlanillaDto> tiposPlanillaDtoList;
     TipoPlanillaDto seleccion;
+    TiposPlanillaViewController controller;
 
     /**
      * Initializes the controller class.
@@ -69,6 +70,8 @@ public class BuscarViewController extends Controller implements Initializable {
         txtfCodigo.setTextFormatter(Formato.getInstance().maxLengthFormat(4));
         txtfDescripcion.setTextFormatter(Formato.getInstance().letrasFormat(40));
         cmbEstado.setItems(estados);
+
+        controller = (TiposPlanillaViewController) FlowController.getInstance().getController("TiposPlanillaView");
 
         cargarListaTiposPlanilla();
 
@@ -89,16 +92,16 @@ public class BuscarViewController extends Controller implements Initializable {
     @FXML
     private void onMouseClickedAgregar(MouseEvent event) {
         if (seleccion != null) {
-            TiposPlanillaViewController controller = (TiposPlanillaViewController) FlowController.getInstance().getController("TiposPlanillaView");
-            controller.cargarTipoPlanilla(seleccion.getId());
+            controller.cargarTipoPlanilla(seleccion);
             getStage().close();
+            FlowController.getInstance().deleteView("BuscarView");
         }
     }
 
     @FXML
     private void onMouseClickedSalir(MouseEvent event) {
-        ((Stage) btnSalir.getScene().getWindow()).close();
         FlowController.getInstance().deleteView("BuscarView");
+        ((Stage) btnSalir.getScene().getWindow()).close();
     }
 
     @FXML
@@ -107,8 +110,7 @@ public class BuscarViewController extends Controller implements Initializable {
         if (event.getClickCount() == 2) {
             seleccion = tblvTiposPlanilla.getSelectionModel().getSelectedItem();
             if (seleccion != null) {
-                TiposPlanillaViewController controller = (TiposPlanillaViewController) FlowController.getInstance().getController("TiposPlanillaView");
-                controller.cargarTipoPlanilla(seleccion.getId());
+                controller.cargarTipoPlanilla(seleccion);
                 getStage().close();
                 FlowController.getInstance().deleteView("BuscarView");
             }

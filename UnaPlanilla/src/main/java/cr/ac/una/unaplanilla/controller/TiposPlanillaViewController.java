@@ -103,7 +103,7 @@ public class TiposPlanillaViewController extends Controller implements Initializ
     public void initialize(URL url, ResourceBundle rb) {
         TipoPlanillaService service = new TipoPlanillaService();
         service.getTiposPlanilla();
-        
+
         txtId.setTextFormatter(Formato.getInstance().integerFormat());
         txtCodigo.setTextFormatter(Formato.getInstance().maxLengthFormat(4));
         txtDescripcion.setTextFormatter(Formato.getInstance().letrasFormat(40));
@@ -251,7 +251,7 @@ public class TiposPlanillaViewController extends Controller implements Initializ
                 new Mensaje().showModal(Alert.AlertType.ERROR, "Cargar Tipo Planilla", getStage(), respuesta.getMensaje());
             }
         } catch (Exception ex) {
-            Logger.getLogger(EmpleadosViewController.class.getName()).log(Level.SEVERE, "Error consultando el tipo de planilla.", ex);
+            Logger.getLogger(TiposPlanillaViewController.class.getName()).log(Level.SEVERE, "Error consultando el tipo de planilla.", ex);
             new Mensaje().showModal(Alert.AlertType.ERROR, "Cargar Tipo Planilla", getStage(), "Ocurrio un error consultando el tipo de planilla.");
         }
     }
@@ -374,6 +374,12 @@ public class TiposPlanillaViewController extends Controller implements Initializ
             Logger.getLogger(EmpleadosViewController.class.getName()).log(Level.SEVERE, "Error guardando el tipo de planilla.", ex);
             new Mensaje().showModal(Alert.AlertType.ERROR, "Guardar Tipo Planilla", getStage(), "Ocurrio un error guardando el tipo de planilla.");
         }
+    }
+
+    public void cargarTipoPlanilla(TipoPlanillaDto tipoPlanilla) {
+        unbindTipoPlanilla();
+        this.tipoPlanillaDto = tipoPlanilla;
+        bindTipoPlanilla(false);
     }
 
     private class ButtonCell extends TableCell<EmpleadoDto, Boolean> {

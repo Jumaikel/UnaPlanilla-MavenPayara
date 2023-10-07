@@ -170,6 +170,10 @@ public class FlowController {
             controller.getStage().getScene().setRoot(new Pane());
             controller.setStage(null);
         });
+        stage.setOnCloseRequest(e -> {
+            stage.close();
+            deleteView(viewName);
+        });
         controller.setStage(stage);
         Parent root = loader.getRoot();
         Scene scene = new Scene(root);

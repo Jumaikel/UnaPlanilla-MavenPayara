@@ -35,7 +35,7 @@ public class TipoPlanillaService {
             TipoPlanillaDto tipoPlanillaDto = (TipoPlanillaDto) request.readEntity(TipoPlanillaDto.class);
             return new Respuesta(true, "", "", "TipoPlanilla", tipoPlanillaDto);
         } catch (Exception ex) {
-            Logger.getLogger(EmpleadoService.class.getName()).log(Level.SEVERE, "Error obteniendo el tipo de Planilla [" + id + "]", ex);
+            Logger.getLogger(TipoPlanillaService.class.getName()).log(Level.SEVERE, "Error obteniendo el tipo de Planilla [" + id + "]", ex);
             return new Respuesta(false, "Error obteniendo el tipo de Planilla.", "getTipoPlanilla " + ex.getMessage());
         }
     }
@@ -54,7 +54,7 @@ public class TipoPlanillaService {
             System.out.println(tiposPlanillaDto.size());
             return new Respuesta(true, "", "", "TiposPlanilla", tiposPlanillaDto);
         } catch (Exception ex) {
-            Logger.getLogger(EmpleadoService.class.getName()).log(Level.SEVERE, "Error obteniendo los tipos de Planilla", ex);
+            Logger.getLogger(TipoPlanillaService.class.getName()).log(Level.SEVERE, "Error obteniendo los tipos de Planilla", ex);
             return new Respuesta(false, "Error obteniendo los tipos de Planilla.", "getTiposPlanilla " + ex.getMessage());
         }
     }
@@ -70,7 +70,7 @@ public class TipoPlanillaService {
             TipoPlanillaDto tipoPlanillaDto = (TipoPlanillaDto) request.readEntity(TipoPlanillaDto.class);
             return new Respuesta(true, "", "", "TipoPlanilla", tipoPlanillaDto);
         } catch (Exception ex) {
-            Logger.getLogger(EmpleadoService.class.getName()).log(Level.SEVERE, "Error guardando el empleado.", ex);
+            Logger.getLogger(TipoPlanillaService.class.getName()).log(Level.SEVERE, "Error guardando el empleado.", ex);
             return new Respuesta(false, "Error guardando el tipo de Planilla.", "guardarTipoPlanilla " + ex.getMessage());
         }
     }
@@ -87,7 +87,7 @@ public class TipoPlanillaService {
             }
             return new Respuesta(true, "", "");
         } catch (Exception ex) {
-            Logger.getLogger(EmpleadoService.class.getName()).log(Level.SEVERE, "Error eliminando el tipo de Planilla.", ex);
+            Logger.getLogger(TipoPlanillaService.class.getName()).log(Level.SEVERE, "Error eliminando el tipo de Planilla.", ex);
             return new Respuesta(false, "Error eliminando el tipo de Planilla.", "eliminarTipoPlanilla " + ex.getMessage());
         }
     }
