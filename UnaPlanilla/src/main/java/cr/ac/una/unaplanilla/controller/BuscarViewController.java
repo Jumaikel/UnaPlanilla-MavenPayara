@@ -5,7 +5,6 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import cr.ac.una.unaplanilla.model.TipoPlanillaDto;
 import cr.ac.una.unaplanilla.service.TipoPlanillaService;
-import cr.ac.una.unaplanilla.util.AppContext;
 import cr.ac.una.unaplanilla.util.FlowController;
 import cr.ac.una.unaplanilla.util.Formato;
 import cr.ac.una.unaplanilla.util.Mensaje;
@@ -55,7 +54,7 @@ public class BuscarViewController extends Controller implements Initializable {
     @FXML
     private JFXComboBox<String> cmbEstado;
 
-    ObservableList<String> estados = FXCollections.observableArrayList("Activo", "Inactivo");
+    ObservableList<String> estados = FXCollections.observableArrayList("Estado", "Activo", "Inactivo");
     ObservableList<TipoPlanillaDto> tiposPlanilla;
 
     List<TipoPlanillaDto> tiposPlanillaDtoList;
@@ -156,7 +155,7 @@ public class BuscarViewController extends Controller implements Initializable {
         List<TipoPlanillaDto> resultado = tiposPlanillaDtoList.stream()
                 .filter(item -> item.getCodigo().contains(codigo))
                 .filter(item -> item.getDescripcion().contains(descripcion))
-                .filter(item -> estado == null || estado.isEmpty() || item.getEstado().equals(estado.equals("Activo") ? "A" : "I"))
+                .filter(item -> estado == null || estado.isEmpty() || estado == "Estado" || item.getEstado().equals(estado.equals("Activo") ? "A" : "I"))
                 .collect(Collectors.toList());
 
         tiposPlanilla.clear();
