@@ -3,7 +3,9 @@ package cr.ac.una.unaplanillaws.controller;
 import cr.ac.una.unaplanillaws.model.EmpleadoDto;
 import cr.ac.una.unaplanillaws.service.EmpleadoService;
 import cr.ac.una.unaplanillaws.util.CodigoRespuesta;
+import cr.ac.una.unaplanillaws.util.JwTokenHelper;
 import cr.ac.una.unaplanillaws.util.Respuesta;
+import cr.ac.una.unaplanillaws.util.Secure;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.ejb.EJB;
 import jakarta.ws.rs.Consumes;
@@ -32,7 +34,8 @@ public class EmpleadoController {
     EmpleadoService empleadoService;
 
     private static final Logger LOG = Logger.getLogger(EmpleadoService.class.getName());
-
+    
+    @Secure
     @GET
     @Path("/empleado/{id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -53,7 +56,7 @@ public class EmpleadoController {
         }
     }
     
-        @GET
+    @GET
     @Path("/empleado/{usuario}/{clave}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -64,7 +67,9 @@ public class EmpleadoController {
             if (!res.getEstado()) {
                 return Response.status(res.getCodigoRespuesta().getValue()).entity(res.getMensaje()).build();
             }
-            return Response.ok(res.getResultado("Empleado")).build();
+            EmpleadoDto empleadoDto = (EmpleadoDto)res.getResultado("Empleado");
+            empleadoDto.setToken(JwTokenHelper.getInstance().generatePrivateKey(usuario));
+            return Response.ok(empleadoDto).build();
 
         } catch (Exception ex) {
 
@@ -73,7 +78,7 @@ public class EmpleadoController {
         }
     }
 
-
+    @Secure
     @GET
     @Path("/empleados/{cedula}/{nombre}/{pApellido}")
     public Response getEmpleados(@PathParam("cedula") String cedula, @PathParam("nombre") String nombre, @PathParam("pApellido") String pApellido) {
@@ -90,6 +95,7 @@ public class EmpleadoController {
         }
     }
 
+    @Secure
     @DELETE
     @Path("/eliminarEmpleado/{id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -110,7 +116,8 @@ public class EmpleadoController {
         }
     }
     
-        @POST
+    @Secure
+    @POST
     @Path("/empleado")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)

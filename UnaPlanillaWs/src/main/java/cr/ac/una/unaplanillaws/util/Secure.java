@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package cr.ac.una.unaplanillaws.util;
 
 import jakarta.ws.rs.NameBinding;
@@ -12,7 +8,7 @@ import java.lang.annotation.Target;
 
 /**
  *
- * @author Jordan
+ * @author Jumaikel
  */
 @NameBinding
 @Retention(RetentionPolicy.RUNTIME)

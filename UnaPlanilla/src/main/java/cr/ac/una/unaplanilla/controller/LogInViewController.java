@@ -23,6 +23,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -63,8 +65,23 @@ public class LogInViewController extends Controller implements Initializable {
 
     @FXML
     private void onActionBtnIngresar(ActionEvent event) {
-        try {
+        ingresar();
+    }
 
+    @FXML
+    private void onActionBtnSalir(ActionEvent event) {
+        ((Stage) btnSalir.getScene().getWindow()).close();
+    }
+
+    @FXML
+    private void onKeyPressedIngresar(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            ingresar();
+        }
+    }
+
+    private void ingresar() {
+        try {
             if (txfUsuario.getText() == null || txfUsuario.getText().isBlank()) {
                 new Mensaje().showModal(Alert.AlertType.ERROR, "Validación de usuario", getStage(), "Es necesario digitar un usuario para ingresar al sistema.");
             } else if (psfClave.getText() == null || psfClave.getText().isEmpty()) {
@@ -73,9 +90,9 @@ public class LogInViewController extends Controller implements Initializable {
                 EmpleadoService empleadoService = new EmpleadoService();
                 Respuesta respuesta = empleadoService.getUsuario(txfUsuario.getText(), psfClave.getText());
                 if (respuesta.getEstado()) {
-                   AppContext.getInstance().set("Usuario", respuesta.getResultado("Empleado"));
-                   FlowController.getInstance().goMain();
-                   getStage().close();
+                    AppContext.getInstance().set("Usuario", respuesta.getResultado("Empleado"));
+                    FlowController.getInstance().goMain();
+                    getStage().close();
                 } else {
                     new Mensaje().showModal(Alert.AlertType.ERROR, "Validación Usuario", getStage(), respuesta.getMensaje());
                 }
@@ -85,10 +102,4 @@ public class LogInViewController extends Controller implements Initializable {
             new Mensaje().show(Alert.AlertType.ERROR, "LogIn", "Error ingresando al sistema.");
         }
     }
-
-    @FXML
-    private void onActionBtnSalir(ActionEvent event) {
-        ((Stage) btnSalir.getScene().getWindow()).close();
-    }
-
 }

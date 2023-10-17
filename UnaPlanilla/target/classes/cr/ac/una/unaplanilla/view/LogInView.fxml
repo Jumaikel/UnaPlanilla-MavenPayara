@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="root" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.unaplanilla.controller.LogInViewController">
+<AnchorPane id="AnchorPane" fx:id="root" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.unaplanilla.controller.LogInViewController">
     <stylesheets>
         <URL value="@Style.css" />
     </stylesheets>
@@ -58,7 +58,7 @@
                               <Image url="@../resources/Contraseña-48.png" />
                            </image>
                         </ImageView>
-                        <JFXPasswordField fx:id="psfClave" labelFloat="true" prefHeight="40.0" promptText="Clave" HBox.hgrow="ALWAYS" />
+                        <JFXPasswordField fx:id="psfClave" labelFloat="true" onKeyPressed="#onKeyPressedIngresar" prefHeight="40.0" promptText="Clave" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="42.0" prefWidth="200.0" spacing="20.0">
