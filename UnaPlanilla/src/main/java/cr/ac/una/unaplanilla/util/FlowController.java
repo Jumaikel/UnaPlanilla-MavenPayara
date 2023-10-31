@@ -155,7 +155,7 @@ public class FlowController {
     }
 
     public void goLogInWindowModal(Boolean resizable) {
-        goViewInWindowModal("LogIng2", this.controller.getStage(), resizable);
+        goViewInWindowModal("LogInView", this.controller.getStage(), resizable);
     }
 
     public void goViewInWindowModal(String viewName, Stage parentStage, Boolean resizable) {

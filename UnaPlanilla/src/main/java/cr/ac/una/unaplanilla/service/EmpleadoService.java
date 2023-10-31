@@ -29,7 +29,7 @@ public class EmpleadoService {
             parametros.put("usuario", usuario);
             parametros.put("clave", clave);
             Request request = new Request("EmpleadoController/empleado/", "{usuario}/{clave}", parametros);
-            request.get();
+            request.getToken();
             if (request.isError()) {
                 return new Respuesta(false, request.getError(), "");
             }
@@ -38,6 +38,21 @@ public class EmpleadoService {
         } catch (Exception ex) {
             Logger.getLogger(EmpleadoService.class.getName()).log(Level.SEVERE, "Error obteniendo el usuario [" + usuario + "]", ex);
             return new Respuesta(false, "Error obteniendo el usuario.", "getUsuario " + ex.getMessage());
+        }
+    }
+    
+    public Respuesta renovarToken() {
+        try {
+            Request request = new Request("EmpleadoController/renovar");
+            request.getRenewal();
+            if (request.isError()) {
+                return new Respuesta(false, request.getError(), "");
+            }
+            String token = (String) request.readEntity(String.class);
+            return new Respuesta(true, "", "", "Token", token);
+        } catch (Exception ex) {
+            Logger.getLogger(EmpleadoService.class.getName()).log(Level.SEVERE, "Error obteniendo el token", ex);
+            return new Respuesta(false, "Error renovando el token.", "renovarToken " + ex.getMessage());
         }
     }
 

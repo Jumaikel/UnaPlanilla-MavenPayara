@@ -37,33 +37,33 @@ public class JwTokenHelper {
         return jwTokenHelper;
     }
 
-    public String generatePrivateKey(String username) {
+    public String generatePrivateKey(String username) { //devuelve el coso de base 64 con el bearer al inicio
         return AUTHENTICATION_SCHEME + Jwts
                 .builder()
                 .setSubject(username)
                 .setIssuedAt(new Date())
                 .setExpiration(getExpirationDate(false))
-//                .claim("rnt", AUTHENTICATION_SCHEME + Jwts
-//                        .builder()
-//                        .setSubject(username)
-//                        .setIssuedAt(new Date())
-//                        .setExpiration(getExpirationDate(true))
-//                        .claim("rnw", true)
-//                        .signWith(key)
-//                        .compact())
+                .claim("rnt", AUTHENTICATION_SCHEME + Jwts //este es un toquen como tal
+                        .builder()
+                        .setSubject(username)
+                        .setIssuedAt(new Date())
+                        .setExpiration(getExpirationDate(true))
+                        .claim("rnw", true) //bandera de que es un otken de renovacion
+                        .signWith(key)
+                        .compact())
                 .signWith(key)
                 .compact();
     }
 
     public Claims claimKey(String privateKey) throws ExpiredJwtException, MalformedJwtException {
-        return Jwts
+        return Jwts           // obtiene los claims de el metodo anterior, ExpiredJwtException para ver si ya expiro,MalformedJwtException para ver si fue modificado o no
                 .parser()
                 .setSigningKey(key)
                 .parseClaimsJws(privateKey)
                 .getBody();
     }
 
-    private Date getExpirationDate(boolean renewal) {
+    private Date getExpirationDate(boolean renewal) { // esto es para validar los tiempos , agarra la fecha de ahorita y le suma los minutos de mas 
         long currentTimeInMillis = System.currentTimeMillis();
         long expMilliSeconds = TimeUnit.MINUTES.toMillis(EXPIRATION_LIMIT);
         if (renewal) {

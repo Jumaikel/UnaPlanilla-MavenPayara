@@ -277,7 +277,7 @@ public class EmpleadosViewController extends Controller implements Initializable
 
     @FXML
     private void buscarEmpleado(ActionEvent event) {
-        
+        cargarEmpleado(Long.valueOf(txtId.getText()));
     }
 
     @FXML

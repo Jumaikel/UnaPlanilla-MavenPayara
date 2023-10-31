@@ -17,5 +17,7 @@ cr\ac\una\unaplanilla\model\TipoPlanillaDto.class
 cr\ac\una\unaplanilla\util\Formato.class
 cr\ac\una\unaplanilla\service\TipoPlanillaService$1.class
 cr\ac\una\unaplanilla\util\Respuesta.class
+cr\ac\una\unaplanilla\util\Request$1$1.class
+cr\ac\una\unaplanilla\util\Request$1.class
 cr\ac\una\unaplanilla\controller\BuscarViewController.class
 cr\ac\una\unaplanilla\controller\TiposPlanillaViewController.class

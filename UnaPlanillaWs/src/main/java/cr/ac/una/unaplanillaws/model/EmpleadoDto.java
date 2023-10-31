@@ -5,6 +5,11 @@
  */
 package cr.ac.una.unaplanillaws.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -13,26 +18,43 @@ import java.util.Objects;
  *
  * @author Carlos
  */
-
+@Schema(description = "Empleado")
 public class EmpleadoDto {
 
+    @Schema(description = "id del empleado", example = "1")
     private Long id;
+    @NotNull(message = "El nombre del empleado no puede ser nulo")
+    @NotEmpty(message = "El nombre del empleado no puede estar vacío")
+    @Size(min = 1, max = 30, message = "El nombre del empleado debe tener una longitud entre 1 y 30 caracteres")
+    @Schema(description = "Nombre del empleado", example = "Jumaikel")
     private String nombre;
+    @Schema(description = "Primer Apellido del empleado", example = "Chinchilla")
     private String primerApellido;
+    @Schema(description = "Segundo Apellido del empleado", example = "Mora")
     private String segundoApellido;
     private String cedula;
     private String genero;
+    @NotNull(message = "El correo del empleado no debe ser nulo")
+    @NotEmpty(message = "El correo del empleado no debe ser vacío")
+    @Pattern(regexp = "[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})", message = "El formato del correo del empleado no es válido")
+    @Size(max = 80, message = "El correo del empleado debe tener una longitud de máximo 80 caracteres")
+    @Schema(description = "Correo del empleado", example = "jumaikelcm@gmail.com")
     private String correo;
     private String administrador;
     private String usuario;
     private String clave;
     private LocalDate fechaIngreso;
     private LocalDate fechaSalida;
+    @NotNull(message = "El estado del empleado no puede ser nulo")
+    @NotEmpty(message = "El estado del empleado no puede estar vacío")
+    @Size(max = 1, message = "El estado del empleado debe tener una longitud de 1 caracter")
+    @Pattern(regexp = "A|I", message = "El estado del empleado no es válido")
+    @Schema(description = "Estado del empleado (A:Activo, I:Inactivo)", example = "A", allowableValues = {"A", "I"})
     private String estado;
     private Long version;
     private Boolean modificado;
     private String token;
-   // TODO
+    // TODO
     private LocalDateTime fecha;
 
     public EmpleadoDto() {
@@ -53,7 +75,7 @@ public class EmpleadoDto {
         this.usuario = empleado.getUsuario();
         this.clave = empleado.getClave();
         this.fechaIngreso = empleado.getFechaIngreso();
-        if (empleado.getFechaSalida()!= null) {
+        if (empleado.getFechaSalida() != null) {
             this.fechaSalida = empleado.getFechaSalida();
         } else {
             this.fechaSalida = null;
@@ -166,7 +188,7 @@ public class EmpleadoDto {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
+
     public Boolean getModificado() {
         return modificado;
     }

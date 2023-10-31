@@ -23,7 +23,15 @@
             }
         ],
         "components": {
-            
+            "securitySchemes": {
+                "jwt-auth": {
+                    "type": "http",
+                    "description": "Json Web Token (JWT)",
+                    "in": "header",
+                    "scheme": "bearer",
+                    "bearerFormat": "JWT"
+                }
+            }
         }
     }
 }
